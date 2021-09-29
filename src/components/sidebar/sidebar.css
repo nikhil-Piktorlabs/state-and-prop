@@ -1,0 +1,12 @@
+.sidebar {
+  background: yellowgreen;
+  height: 100%;
+  position: fixed;
+  width: 30rem;
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    left: -30rem;
+  }
+}
