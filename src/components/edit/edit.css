@@ -1,4 +1,18 @@
 .edit {
   background: cadetblue;
   margin: 2rem;
+  overflow: auto;
+}
+
+.edit-row {
+  display: inline-flex;
+  margin: 1rem 0 1rem 1rem;
+}
+
+.edit-row__item {
+  margin-right: 0.5rem;
+}
+
+.edit__new-item {
+  white-space: nowrap;
 }
