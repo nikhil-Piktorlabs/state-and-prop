@@ -29,4 +29,5 @@ thead {
   background: whitesmoke;
   z-index: 2;
   box-shadow: inset 0 0.01rem 0 black, inset 0 -0.02rem 0 black;
+  z-index: 1;
 }
