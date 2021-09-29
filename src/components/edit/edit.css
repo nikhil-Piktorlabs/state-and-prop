@@ -1,16 +1,21 @@
 .edit {
   background: cadetblue;
   margin: 2rem;
+  padding: 2rem;
+}
+
+.edit__box {
   overflow: auto;
+  max-height: 20rem;
 }
 
 .edit-row {
-  display: inline-flex;
-  margin: 1rem 0 1rem 1rem;
+  display: flex;
+  margin: 1rem 0;
 }
 
 .edit-row__item {
-  margin-right: 0.5rem;
+  margin-right: 1rem;
 }
 
 .edit__new-item {
