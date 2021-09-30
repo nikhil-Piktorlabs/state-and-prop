@@ -5,48 +5,67 @@ import "./main.css";
 
 class Main extends Component {
   state = {
-    employees: [{ id: 1, firstName: "", lastName: "" }],
-    idCount: 2,
+    employees: [],
+    newEmployee: { firstName: "", lastName: "" },
+    idCount: 1,
   };
 
   handleAdd = () => {
-    const { employees: oldEmployees, idCount } = this.state;
+    const { employees: oldEmployees, newEmployee, idCount } = this.state;
 
-    const newEmployee = { id: idCount, firstName: "", lastName: "" };
-    const employees = [...oldEmployees, newEmployee];
+    if (newEmployee.firstName === "" || newEmployee.lastName === "") {
+      alert("Input fields cannot be left empty!!");
+      return;
+    }
+    const employees = [...oldEmployees, { ...newEmployee, id: idCount }];
 
-    this.setState({ employees, idCount: idCount + 1 });
+    this.setState({
+      employees,
+      newEmployee: { firstName: "", lastName: "" },
+      idCount: idCount + 1,
+    });
   };
 
-  handleChange = (e, id) => {
+  handleChange = (e, employee) => {
     e.preventDefault();
+
     const { name, value } = e.currentTarget;
     let employees = [...this.state.employees];
-
     employees = employees.map((e) =>
-      e.id === id ? { ...e, [name]: value } : e
+      e.id === employee.id ? { ...e, [name]: value } : e
     );
+
     this.setState({ employees });
   };
 
-  handleRemove = (id) => {
+  handleChangeNewEmployee = (e, employee) => {
+    e.preventDefault();
+
+    const { name, value } = e.currentTarget;
+
+    this.setState({ newEmployee: { ...employee, [name]: value } });
+  };
+
+  handleRemove = (employee) => {
     let employees = [...this.state.employees];
 
-    employees = employees.filter((e) => e.id !== id);
+    employees = employees.filter((e) => e.id !== employee.id);
     this.setState({ employees });
   };
 
   render() {
-    const { employees } = this.state;
+    const { employees, newEmployee } = this.state;
 
     return (
       <section className="main">
         Main
         <Display items={employees} />
         <Edit
+          item={newEmployee}
           items={employees}
           onAdd={this.handleAdd}
           onChange={this.handleChange}
+          onNewChange={this.handleChangeNewEmployee}
           onRemove={this.handleRemove}
         />
       </section>

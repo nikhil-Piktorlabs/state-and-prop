@@ -1,16 +1,16 @@
 import React from "react";
 import "./edit.css";
 
-const EditRow = ({ item, onChange, onRemove }) => {
+const EditRow = ({ item, onChange, onClick, buttonLabel }) => {
   return (
-    <React.Fragment>
+    <div className="edit-row">
       <input
         className="edit-row__item"
         type="text"
         placeholder="Enter First Name"
         value={item.firstName}
         name="firstName"
-        onChange={(e) => onChange(e, item.id)}
+        onChange={(e) => onChange(e, item)}
       />
       <input
         className="edit-row__item"
@@ -18,12 +18,12 @@ const EditRow = ({ item, onChange, onRemove }) => {
         placeholder="Enter Last Name"
         value={item.lastName}
         name="lastName"
-        onChange={(e) => onChange(e, item.id)}
+        onChange={(e) => onChange(e, item)}
       />
-      <button className="edit-row__item" onClick={() => onRemove(item.id)}>
-        Remove
+      <button className="edit-row__item" onClick={() => onClick(item)}>
+        {buttonLabel}
       </button>
-    </React.Fragment>
+    </div>
   );
 };
 
