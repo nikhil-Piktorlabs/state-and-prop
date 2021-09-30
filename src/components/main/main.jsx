@@ -19,6 +19,7 @@ class Main extends Component {
   };
 
   handleChange = (e, id) => {
+    e.preventDefault();
     const { name, value } = e.currentTarget;
     let employees = [...this.state.employees];
 
@@ -32,7 +33,6 @@ class Main extends Component {
     let employees = [...this.state.employees];
 
     employees = employees.filter((e) => e.id !== id);
-    console.log(employees);
     this.setState({ employees });
   };
 
